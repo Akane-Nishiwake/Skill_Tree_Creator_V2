@@ -1,0 +1,63 @@
+{
+  "skill_tree": {
+    "name": "Final Fantasy XVI Skill Tree",
+    "nodes": [
+      {
+        "id": "1",
+        "name": "Lunge",
+        "description": "A fast thrust attack to close the distance.",
+        "cost": 100,
+        "effect": "Increases attack speed when closing distance.",
+        "prerequisites": []
+      },
+      {
+        "id": "2",
+        "name": "Rising Flame",
+        "description": "A fiery uppercut that launches enemies.",
+        "cost": 200,
+        "effect": "Launches enemies into the air.",
+        "prerequisites": ["1"]
+      },
+      {
+        "id": "3",
+        "name": "Phoenix Shift",
+        "description": "Teleport to an enemy instantly with a burst of flame.",
+        "cost": 300,
+        "effect": "Instantly closes distance to an enemy with flame damage.",
+        "prerequisites": ["2"]
+      },
+      {
+        "id": "4",
+        "name": "Titan Block",
+        "description": "A massive guard that absorbs damage.",
+        "cost": 150,
+        "effect": "Reduces damage taken from attacks.",
+        "prerequisites": []
+      },
+      {
+        "id": "5",
+        "name": "Wind Slash",
+        "description": "A ranged slash attack with wind energy.",
+        "cost": 250,
+        "effect": "Sends a ranged wind projectile at enemies.",
+        "prerequisites": ["1"]
+      },
+      {
+        "id": "6",
+        "name": "Aerial Recovery",
+        "description": "Recover quickly after being launched.",
+        "cost": 200,
+        "effect": "Allows midair recovery after being hit.",
+        "prerequisites": []
+      },
+      {
+        "id": "7",
+        "name": "Ultimate Eikon Strike",
+        "description": "Unleash a devastating attack infused with Eikon power.",
+        "cost": 500,
+        "effect": "Massive AoE attack that deals heavy damage.",
+        "prerequisites": ["3", "4", "5"]
+      }
+    ]
+  }
+}

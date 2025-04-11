@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.web.WebView?>
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.skill_tree_creator_v2.HelloController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20"/>
+    </padding>
+
+    <HBox spacing="10">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Input Files:"/>
+            <ListView fx:id="inputListView" VBox.vgrow="ALWAYS"/>
+            <Button text="Add Files" onAction="#handleAddFiles" maxWidth="Infinity"/>
+        </VBox>
+
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Output Files:"/>
+            <ListView fx:id="outputListView" VBox.vgrow="ALWAYS"/>
+            <Button text="Convert Files to PDF" onAction="#handleConvert" maxWidth="Infinity"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="5" VBox.vgrow="ALWAYS">
+        <Label text="Preview:"/>
+        <WebView fx:id="previewWebView" VBox.vgrow="ALWAYS"/>
+        <Button text="Preview" onAction="#handlePreview" maxWidth="Infinity"/>
+    </VBox>
+</VBox>
