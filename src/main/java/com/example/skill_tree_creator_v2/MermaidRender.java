@@ -8,6 +8,7 @@ public class MermaidRender
     {
         this.skillTree = skillTree;
     }
+
     /**
      * Render diagram
      * Creates a WebView to display the Mermaid diagram and adds it to the JFXPanel
@@ -17,6 +18,7 @@ public class MermaidRender
         String mermaidDef = buildMermaidDiagram();
         return generateHtml(mermaidDef);
     }
+
     /**
      * Build Mermaid diagram
      *
@@ -47,8 +49,8 @@ public class MermaidRender
     {
         return "<html>" + "<head>" +
                "<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min" +
-               ".js\"></script>" +
-               "<script type=\"text/javascript\">" + "mermaid.initialize({startOnLoad:true});" + "</script>" +
-               "</head>" + "<body>" + "<div class=\"mermaid\">" + mermaidDefinition + "</div>" + "</body>" + "</html>";
+               ".js\"></script>" + "<script type=\"text/javascript\">" + "mermaid.initialize({startOnLoad:true});" +
+               "</script>" + "</head>" + "<body>" + "<div class=\"mermaid\">" + mermaidDefinition + "</div>" +
+               "</body>" + "</html>";
     }
 }

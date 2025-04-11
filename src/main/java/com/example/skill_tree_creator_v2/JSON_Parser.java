@@ -15,6 +15,7 @@ public class JSON_Parser
     private final String mInputFileName;
     private final String mOutputFileName;
     private final SkillTree mSkillTree;
+
     /**
      * Constructor
      *
@@ -26,14 +27,15 @@ public class JSON_Parser
     {
         mInputFileName = inputFileName;
         File outputDir = new File("Output_JSON");
-//        if (!outputDir.exists())
-//        {
-//            //noinspection ResultOfMethodCallIgnored
-//            outputDir.mkdirs();
-//        }
+        //        if (!outputDir.exists())
+        //        {
+        //            //noinspection ResultOfMethodCallIgnored
+        //            outputDir.mkdirs();
+        //        }
         mOutputFileName = "Output_JSON/Output" + getInputFileName();
         mSkillTree = readSkillTree(mInputFileName);
     }
+
     /**
      * Get input file name
      *
@@ -68,6 +70,7 @@ public class JSON_Parser
     {
         return mOutputFileName;
     }
+
     /**
      * Read skill tree from JSON
      *
@@ -81,11 +84,12 @@ public class JSON_Parser
         Reader reader = new FileReader(filename);
         JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
         SkillTree skill = gson.fromJson(jsonObject.getAsJsonObject("skill_tree"), SkillTree.class);
-        if(skill != null)
+        if (skill != null)
         {
             return skill;
         }
-        else{
+        else
+        {
             throw new FileNotFoundException("Failed to parse JSON file: " + filename);
         }
     }

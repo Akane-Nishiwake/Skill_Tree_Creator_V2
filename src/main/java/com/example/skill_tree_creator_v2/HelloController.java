@@ -5,10 +5,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
+
 import java.io.File;
 import java.util.List;
 
-public class HelloController {
+/**
+ * HelloController - Main controller for the application's UI
+ * Handles user interactions and manages the conversion workflow
+ */
+public class HelloController
+{
     @FXML
     private ListView<String> inputListView;
     @FXML
@@ -16,40 +22,60 @@ public class HelloController {
     @FXML
     private TextArea previewArea;
 
+    /**
+     * Handle the "Add Files" button click
+     * Opens a file chooser dialog for JSON files
+     */
     @FXML
-    protected void handleAddFiles() {
+    protected void handleAddFiles()
+    {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(
-            new FileChooser.ExtensionFilter("JSON Files", "*.json")
-        );
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
         List<File> files = fileChooser.showOpenMultipleDialog(inputListView.getScene().getWindow());
 
-        if (files != null) {
+        if (files != null)
+        {
             files.forEach(file -> inputListView.getItems().add(file.getPath()));
         }
     }
 
+    /**
+     * Handle the "Convert" button click
+     * Processes all input files and generates output
+     */
     @FXML
-    protected void handleConvert() {
+    protected void handleConvert()
+    {
         // Implement conversion logic here
-        inputListView.getItems().forEach(path -> {
-            try {
-                JSON_Parser parser = new JSON_Parser(path);
-                outputListView.getItems().add(parser.getOutputFileName());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+        inputListView.getItems().forEach(path ->
+                                         {
+                                             try
+                                             {
+                                                 JSON_Parser parser = new JSON_Parser(path);
+                                                 outputListView.getItems().add(parser.getOutputFileName());
+                                             }
+                                             catch (Exception e)
+                                             {
+                                                 e.printStackTrace();
+                                             }
+                                         });
     }
 
     @FXML
-    private WebView previewWebView; // Replace TextArea with WebView in FXML and here
+    private WebView previewWebView;
 
+    /**
+     * Handle the "Preview" button click
+     * Renders selected skill tree as Mermaid diagram
+     */
     @FXML
-    protected void handlePreview() {
+    protected void handlePreview()
+    {
         String selectedInput = inputListView.getSelectionModel().getSelectedItem();
-        if (selectedInput != null) {
-            try {
+        if (selectedInput != null)
+        {
+            try
+            {
                 JSON_Parser parser = new JSON_Parser(selectedInput);
                 MermaidRender renderer = new MermaidRender(parser.readSkillTree(selectedInput));
                 String htmlContent = renderer.diagramRender();
@@ -57,7 +83,9 @@ public class HelloController {
                 //WebView webView = previewWebView;
                 PNG_Parser pngParser = new PNG_Parser(previewWebView);
                 pngParser.saveAsPng("preview");
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 previewWebView.getEngine().loadContent("Error loading preview: " + e.getMessage());
             }
         }

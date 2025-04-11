@@ -4,61 +4,83 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * com.example.skill_tree_creator_v2.SkillTreeWrapper - Wrapper class for JSON serialization
+ * SkillTreeWrapper - Wrapper class for JSON serialization
+ * Provides a container for the skill tree structure
  */
 class SkillTreeWrapper
 {
     private SkillTree skill_tree;
 
-    public SkillTreeWrapper(SkillTree skillTree) {
+    public SkillTreeWrapper(SkillTree skillTree)
+    {
         this.skill_tree = skillTree;
     }
 
-    public SkillTree getSkill_tree() {
+    public SkillTree getSkill_tree()
+    {
         return skill_tree;
     }
 
-    public void setSkill_tree(SkillTree skillTree) {
+    public void setSkill_tree(SkillTree skillTree)
+    {
         this.skill_tree = skillTree;
     }
 }
 
 /**
- * com.example.skill_tree_creator_v2.SkillTree - Represents a complete skill tree structure
+ * SkillTree - Represents a complete skill tree structure
+ * Contains the tree name and collection of skill nodes
  */
-public class SkillTree {
+public class SkillTree
+{
     private String name;
     private List<SkillNode> nodes;
 
-    // Default constructor needed by Gson
-    public SkillTree() {
+    /**
+     * Default constructor needed by Gson
+     * Initializes an empty list of nodes
+     */
+    public SkillTree()
+    {
         this.nodes = new ArrayList<>();
     }
 
-    public SkillTree(String name, List<SkillNode> nodes) {
+    /**
+     * Constructor with parameters
+     *
+     * @param name  Name of the skill tree
+     * @param nodes List of skill nodes
+     */
+    public SkillTree(String name, List<SkillNode> nodes)
+    {
         this.name = name;
         this.nodes = nodes != null ? nodes : new ArrayList<>();
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public List<SkillNode> getNodes() {
+    public List<SkillNode> getNodes()
+    {
         return nodes;
     }
 
-    public void setNodes(List<SkillNode> nodes) {
+    public void setNodes(List<SkillNode> nodes)
+    {
         this.nodes = nodes;
     }
 }
 
 /**
- * com.example.skill_tree_creator_v2.SkillNode - Represents a single node in the skill tree
+ * SkillNode - Represents a single node in the skill tree
+ * Contains all properties of a skill including prerequisites
  */
 class SkillNode
 {
@@ -89,51 +111,63 @@ class SkillNode
         this.prerequisites = pre != null ? pre : new ArrayList<>();
     }
 
-    public String getId() {
+    public String getId()
+    {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(String id)
+    {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public int getCost() {
+    public int getCost()
+    {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(int cost)
+    {
         this.cost = cost;
     }
 
-    public String getEffect() {
+    public String getEffect()
+    {
         return effect;
     }
 
-    public void setEffect(String effect) {
+    public void setEffect(String effect)
+    {
         this.effect = effect;
     }
 
-    public List<String> getPrerequisites() {
+    public List<String> getPrerequisites()
+    {
         return prerequisites;
     }
 
-    public void setPrerequisites(List<String> prerequisites) {
+    public void setPrerequisites(List<String> prerequisites)
+    {
         this.prerequisites = prerequisites;
     }
 }
