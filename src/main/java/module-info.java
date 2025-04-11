@@ -12,6 +12,7 @@ module com.example.skill_tree_creator_v2 {
     requires com.google.gson;
     requires java.desktop;
     requires javafx.swing;
+    requires org.apache.pdfbox;
 
     opens com.example.skill_tree_creator_v2 to javafx.fxml, com.google.gson;
     exports com.example.skill_tree_creator_v2;
